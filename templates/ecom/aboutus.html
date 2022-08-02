@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Simple E-commerce</title>
+  <style media="screen">
+    .footer{
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body style="background-color:#f7f7f7;">
+  {%if request.user.is_authenticated%}
+    {% include "ecom/customer_navbar.html" %}
+  {%else%}
+    {% include "ecom/navbar.html" %}
+  {%endif%}
+  <br><br><br>
+<h3 style="text-align:center;">"Men's Collection Men’s provides fashion for men who want to look their best, but who don’t want to pay exorbitant prices.
+It is for men who take pride in style, class and elegance, but who have a social conscience and a desire to help those less fortunate.
+Men's Collection men are innovators and they’re leaders, and they want fashion that empowers their ambition as they move forward in life.
+Men's Collection men are sharply dressed free thinkers.
+
+Men's Collection Men’s is an exciting new concept in men’s online fashion retailing, blending impeccable style, top quality clothing, affordable prices, and a strong commitment to helping the community.
+
+Our range of men’s clothing includes ties, dress shirts and socks, and it is constantly expanding. Everything that features in our store is handpicked by our men’s fashion experts for its quality of material and manufacture, and its style statement. And because of our excellent relationships with suppliers we can negotiate the best prices, which we then pass on to you.
+
+Men’s fashion is in our blood, but it does not make up our whole being as we also have a strong social conscience and a commitment to helping the communities where we live and work. We give a percentage of every sale that we make on La Mode Men’s directly to local homeless shelters. In addition we provide clothing, free of charge, to people living in shelters to help them go on job interviews and get back on track with their lives." </h3>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% include "ecom/footer.html" %}
+</body>
+
+</html>
