@@ -4,10 +4,10 @@ from django.core.validators import RegexValidator
 # Create your models here.
 class Customer(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    profile_pic= models.ImageField(upload_to='profile_pic/CustomerProfilePic/',null=True,blank=True)
+    profile_pic= models.ImageField(upload_to='profile_pic/CustomerProfilePic/',null=True,blank=False)
     address = models.CharField(max_length=40)
     phonreg=RegexValidator(regex=r'^\+?1?\d{10}$')
-    mobile = models.CharField(validators=[phonreg],max_length=10,blank=True)
+    mobile = models.IntegerField(validators=[phonreg],max_length=10,blank=False)
     # mobile = models.CharField(max_length=10,null=False)
     @property
     def get_name(self):
@@ -21,7 +21,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name=models.CharField(max_length=40)
-    product_image= models.ImageField(upload_to='product_image/',null=True,blank=True)
+    product_image= models.ImageField(upload_to='product_image/',null=False,blank=False)
     price = models.PositiveIntegerField()
     description=models.TextField(max_length=110)
     def __str__(self):
@@ -35,11 +35,11 @@ class Orders(models.Model):
         ('Out for Delivery','Out for Delivery'),
         ('Delivered','Delivered'),
     )
-    customer=models.ForeignKey('Customer', on_delete=models.CASCADE,null=True)
-    product=models.ForeignKey('Product',on_delete=models.CASCADE,null=True)
-    email = models.CharField(max_length=50,null=True)
-    address = models.CharField(max_length=500,null=True)
-    mobile = models.CharField(max_length=10,null=True)
+    customer=models.ForeignKey('Customer', on_delete=models.CASCADE,null=False)
+    product=models.ForeignKey('Product',on_delete=models.CASCADE,null=False)
+    email = models.CharField(max_length=50,null=False)
+    address = models.CharField(max_length=500,null=False)
+    mobile = models.CharField(max_length=10,null=False)
     order_date= models.DateField(auto_now_add=True,null=True)
     status=models.CharField(max_length=50,null=True,choices=STATUS)
 
